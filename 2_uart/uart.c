@@ -70,13 +70,7 @@ char uart_read() {
     if(!UART->RXDRDY) {
         return '\0';
     }
-    char stuff;
-    UART->STARTRX = 1;
     UART->RXDRDY = 0;
-    stuff = UART->RXD;
-    UART->STOPRX = 1;
-    return stuff;
-    
-  
+    return UART->RXD;
     
 }
